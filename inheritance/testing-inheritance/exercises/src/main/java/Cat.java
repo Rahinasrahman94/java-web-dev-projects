@@ -13,15 +13,18 @@ public class Cat {
 
     /**** Getters and Setters ****/
 
+
     public boolean isTired() {
         return tired;
     }
 
     public void setTired(boolean aTired) {
+
         tired = aTired;
     }
 
     public boolean isHungry() {
+
         return hungry;
     }
 
