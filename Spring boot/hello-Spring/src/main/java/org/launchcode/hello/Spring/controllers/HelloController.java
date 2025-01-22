@@ -1,18 +1,11 @@
 package org.launchcode.hello.Spring.controllers;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 public class HelloController {
-    @GetMapping("hello")
-    @ResponseBody
-    public String hello() {
-        return "Hello, Spring!";
-    }
+
 
     @GetMapping("goodbye")
     @ResponseBody
@@ -25,7 +18,9 @@ public class HelloController {
     public String greet() {
         return "Hello Rahina!";
     }
-    @GetMapping("hello1")
+  //  @GetMapping("hello")
+  //  @PostMapping("hello")
+    @RequestMapping(method={ RequestMethod.GET,RequestMethod.POST},value = "hello")
     @ResponseBody
     public  String hellowithQeuryParam(@RequestParam String name)
     {
@@ -36,6 +31,20 @@ public class HelloController {
     public  String hellowithPathParam(@PathVariable String name)
     {
         return "Hello path param," + name+"!";
+    }
+    @GetMapping("form")
+    @ResponseBody
+    public String helloform()
+    {
+      return "<html>"+
+              "<body>"+
+              "<form action ='hello'  method ='post'>"+// submit request to /hello
+              "<input type = 'text' name = 'name' >" +
+              "<input type = 'submit' value = 'Greet Me!' >" +
+              "</form>" +
+              "</body>" +
+              "</html>"
+              ;
     }
 
 
