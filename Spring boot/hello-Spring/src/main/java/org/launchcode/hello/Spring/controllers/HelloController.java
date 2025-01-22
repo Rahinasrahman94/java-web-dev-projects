@@ -4,36 +4,35 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
+@ResponseBody
+@RequestMapping("hello")
 public class HelloController {
 
 
     @GetMapping("goodbye")
-    @ResponseBody
     public String goodbye() {
         return "Goodbye, Spring!";
     }
 
     @GetMapping("greetme")
-    @ResponseBody
     public String greet() {
         return "Hello Rahina!";
     }
   //  @GetMapping("hello")
   //  @PostMapping("hello")
-    @RequestMapping(method={ RequestMethod.GET,RequestMethod.POST},value = "hello")
-    @ResponseBody
+    @RequestMapping(method={ RequestMethod.GET,RequestMethod.POST},value="hello")
     public  String hellowithQeuryParam(@RequestParam String name)
     {
         return "Hello," + name+"!";
     }
-    @GetMapping("hello1/{name}")
+    @GetMapping("{name}")
     @ResponseBody
     public  String hellowithPathParam(@PathVariable String name)
     {
         return "Hello path param," + name+"!";
     }
     @GetMapping("form")
-    @ResponseBody
+
     public String helloform()
     {
       return "<html>"+
